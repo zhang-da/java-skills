@@ -9,7 +9,8 @@
         <module>springboot-ureport2</module>
         <module>springboot-activiti</module>
 		<module>learn-netty</module>
-	</modules>
+        <module>redis-lock</module>
+    </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
