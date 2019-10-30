@@ -30,7 +30,8 @@ public class SingleRedisLockService implements RedisLockService {
     private void init() {
         script = new DefaultRedisScript<>();
         script.setResultType(Long.class);
-        script.setScriptText("if redis.call(\"get\",KEYS[1]) == ARGV[1] then\n" +
+        script.setScriptText("" +
+                "if redis.call(\"get\",KEYS[1]) == ARGV[1] then\n" +
                 "    return redis.call(\"del\",KEYS[1])\n" +
                 "else\n" +
                 "    return 0\n" +
