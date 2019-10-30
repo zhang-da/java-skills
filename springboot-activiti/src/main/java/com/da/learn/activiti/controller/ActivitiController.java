@@ -12,21 +12,27 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.activiti.api.task.model.builders.TaskPayloadBuilder;
+import org.activiti.api.task.runtime.TaskRuntime;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.editor.constants.ModelDataJsonConstants;
 import org.activiti.editor.language.json.converter.BpmnJsonConverter;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
 import org.activiti.engine.impl.util.CollectionUtil;
 import org.activiti.engine.repository.*;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.runtime.ProcessInstanceQuery;
+import org.activiti.engine.task.Task;
+import org.activiti.engine.task.TaskQuery;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +49,9 @@ public class ActivitiController {
 
     @Autowired
     private RuntimeService runtimeService;
+
+    @Autowired
+    private TaskService taskService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -153,12 +162,14 @@ public class ActivitiController {
     @PostMapping(value = "deploy")
     @ApiOperation(value = "发布流程", notes = "发布流程")
     public R deploy(String id) {
+        Deployment deployment;
+        Model modelData;
         try {
-            Model modelData = repositoryService.getModel(id);
+            modelData = repositoryService.getModel(id);
             if (modelData == null) {
                 return R.error("模型为空");
             }
-            byte[] sourceBytes = repositoryService.getModelEditorSource(modelData.getId());
+            byte[] sourceBytes = repositoryService.getModelEditorSource(id);
             if (sourceBytes == null) {
                 return R.error("模型为空");
             }
@@ -170,14 +181,20 @@ public class ActivitiController {
                     .name(modelData.getName())
                     .enableDuplicateFiltering()
                     .addBpmnModel(modelData.getName().concat(".bpmn20.xml"), bpmnModel);
-            Deployment deploy = deploymentBuilder.deploy();
-
-            modelData.setDeploymentId(deploy.getId());
-            repositoryService.saveModel(modelData);
+            deployment = deploymentBuilder.deploy();
         } catch (Exception e) {
+            log.error("发布失败，{}", e);
             return R.error("发布失败");
         }
-        return R.ok();
+        if (deployment != null) {
+            modelData.setDeploymentId(deployment.getId());
+            repositoryService.saveModel(modelData);
+            Map<String, String> result = new HashMap<>(2);
+            result.put("deploymentId", deployment.getId());
+            result.put("deploymentName", deployment.getName());
+            return R.ok(result);
+        }
+        return R.error();
     }
 
 
@@ -315,5 +332,82 @@ public class ActivitiController {
         }
         return R.notFound();
     }
+
+    @PostMapping(path = "delete_process_by_id")
+    @ApiOperation(value = "根据流程实例ID删除流程实例", notes = "根据流程实例ID删除流程实例")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "processId", value = "流程实例ID", dataType = "String", paramType = "query"),
+    })
+    public R deleteProcessInstanceByID(@RequestParam("processId") String processId) {
+        try {
+            runtimeService.deleteProcessInstance(processId, "删除" + processId);
+            return R.ok();
+        } catch (Exception e) {
+            log.error("根据流程实例ID删除流程实例,异常:{}", e);
+            return R.error("删除失败");
+        }
+    }
+
+
+    @PostMapping(path = "delete_process_by_key")
+    @ApiOperation(value = "根据流程实例key删除流程实例", notes = "根据流程实例key删除流程实例")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "processDefinitionKey", value = "流程实例Key", dataType = "String", paramType = "query"),
+    })
+    public R deleteProcessInstanceByKey(@RequestParam("processDefinitionKey") String processDefinitionKey) {
+        List<ProcessInstance> runningList;
+        try {
+            ProcessInstanceQuery processInstanceQuery = runtimeService.createProcessInstanceQuery();
+            runningList = processInstanceQuery.processDefinitionKey(processDefinitionKey).list();
+        } catch (Exception e) {
+            log.error("根据流程实例key删除流程实例,异常:{}", e);
+            return R.error("删除失败");
+
+        }
+
+        if (CollectionUtil.isNotEmpty(runningList)) {
+            runningList.forEach(s -> runtimeService.deleteProcessInstance(s.getId(), "删除"));
+        }
+        return R.ok();
+    }
+
+
+    @Autowired
+    private TaskRuntime taskRuntime;
+
+    @GetMapping("test")
+    @ApiOperation(value = "测试用", notes = "测试用")
+    public R test() {
+//        List<Task> list = new ArrayList<>();
+//        try {
+//            list = taskService.createTaskQuery().taskCandidateUser("tu1").list();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        try {
+//            list = taskService.createTaskQuery().taskCandidateUser("tu0").list();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        try {
+//            list = taskService.createTaskQuery().taskCandidateGroup("tg1").list();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        return R.ok(list);
+
+        Model modelData = repositoryService.getModel("78de5ca3-f63c-11e9-a32e-982cbc4bc4d0");
+
+        List<ProcessDefinition> list = repositoryService.createProcessDefinitionQuery()
+                .processDefinitionKey("leave_process").list();
+
+        String diagramResourceName = list.get(0).getDiagramResourceName();
+        InputStream imageStream = repositoryService.getResourceAsStream(list.get(0).getDeploymentId(), diagramResourceName);
+        System.out.println(imageStream);
+
+
+        return R.ok();
+    }
+
 
 }
