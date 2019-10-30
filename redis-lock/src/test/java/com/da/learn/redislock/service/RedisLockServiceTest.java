@@ -24,7 +24,8 @@ public class RedisLockServiceTest {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
-    @Resource(name = "SingleRedisLockService")
+//    @Resource(name = "SingleRedisLockService")
+    @Resource(name = "RedissonRedisLockService")
     private RedisLockService redisLockService;
 
     @Test
@@ -61,7 +62,11 @@ public class RedisLockServiceTest {
         for (int i = 1; i <= 30; i++) {
             Thread thread = new Thread(() -> {
                 for (int j = 1; j <= 10; j++) {
-                    lockAndUnlock();
+                    try {
+                        lockAndUnlock();
+                    } catch (Exception e) {
+
+                    }
                 }
             });
             thread.start();
