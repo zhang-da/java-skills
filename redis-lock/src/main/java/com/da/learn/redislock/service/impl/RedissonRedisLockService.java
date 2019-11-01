@@ -15,6 +15,7 @@ public class RedissonRedisLockService implements RedisLockService {
     /**
      * 参考  org.redisson.spring.starter.RedissonAutoConfiguration
      * 可自己配置Config和RedissonClient
+     * 使用的是普通单机算法  不是redLock算法
      */
     @Autowired
     private RedissonClient redissonClient;
@@ -23,7 +24,8 @@ public class RedissonRedisLockService implements RedisLockService {
     public boolean getLock(String lockName, String lockValue, long leaseTime, TimeUnit unit) {
         RLock lock = redissonClient.getLock(lockName);
         try {
-            return lock.tryLock(500, leaseTime, unit);
+            //如果没有获取锁  最多等待3000unit
+            return lock.tryLock(3000L, unit.toMillis(leaseTime), TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             return false;
         }
