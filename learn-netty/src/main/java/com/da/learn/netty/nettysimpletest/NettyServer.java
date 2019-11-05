@@ -1,4 +1,4 @@
-package com.da.learn.netty;
+package com.da.learn.netty.nettysimpletest;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelHandlerContext;
