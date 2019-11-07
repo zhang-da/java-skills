@@ -1,4 +1,6 @@
-package com.da.learn.netty.codectest;
+package com.da.learn.netty.serialize;
+
+import com.da.learn.netty.serialize.impl.JSONSerializer;
 
 import java.util.HashMap;
 import java.util.Map;

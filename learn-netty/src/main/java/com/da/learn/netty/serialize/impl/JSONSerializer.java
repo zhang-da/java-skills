@@ -1,6 +1,8 @@
-package com.da.learn.netty.codectest;
+package com.da.learn.netty.serialize.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.da.learn.netty.serialize.Serializer;
+import com.da.learn.netty.serialize.SerializerAlgorithm;
 
 public class JSONSerializer implements Serializer {
     @Override

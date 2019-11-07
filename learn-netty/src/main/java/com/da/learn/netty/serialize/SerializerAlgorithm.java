@@ -1,4 +1,4 @@
-package com.da.learn.netty.codectest;
+package com.da.learn.netty.serialize;
 
 public interface SerializerAlgorithm {
     /**

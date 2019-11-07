@@ -1,5 +1,9 @@
-package com.da.learn.netty.codectest;
+package com.da.learn.netty.protocol;
 
+import com.da.learn.netty.protocol.command.CommandEnum;
+import com.da.learn.netty.protocol.request.LoginRequestPacket;
+import com.da.learn.netty.serialize.Serializer;
+import com.da.learn.netty.serialize.SerializerChooser;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 
@@ -9,9 +13,9 @@ public class PacketCodeC {
 
     private static final int MAGIC_NUMBER = 0x12345678;
 
-    public static ByteBuf encode(Packet packet) {
+    public static ByteBuf encode(ByteBufAllocator byteBufAllocator, Packet packet) {
         // 1. 创建 ByteBuf 对象
-        ByteBuf byteBuf = ByteBufAllocator.DEFAULT.ioBuffer();
+        ByteBuf byteBuf = byteBufAllocator.ioBuffer();
         // 2. 序列化 Java 对象
         byte[] bytes = Serializer.DEFAULT.serialize(packet);
         // 3. 实际编码过程
@@ -45,7 +49,11 @@ public class PacketCodeC {
         byte[] bytes = new byte[length];
         byteBuf.readBytes(bytes);
 
-        Class<? extends Packet> requestType = Packet.getRequestType(command);
+        CommandEnum commandEnum = CommandEnum.getCommandEnumByCommand(command);
+        if (commandEnum == null) {
+            return null;
+        }
+        Class<? extends Packet> requestType = commandEnum.getPacketClazz();
         Serializer serializer = SerializerChooser.getSerializer(serializeAlgorithm);
 
         if (requestType != null && serializer != null) {
@@ -61,10 +69,10 @@ public class PacketCodeC {
 
         LoginRequestPacket packet = new LoginRequestPacket();
         packet.setVersion((byte) 1);
-        packet.setUserId(1);
+        packet.setUserId("1");
         packet.setUsername("da");
         packet.setPassword("password");
-        ByteBuf encode = PacketCodeC.encode(packet);
+        ByteBuf encode = PacketCodeC.encode(ByteBufAllocator.DEFAULT, packet);
         Packet decode = PacketCodeC.decode(encode);
         System.out.println(decode);
 
