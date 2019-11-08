@@ -10,6 +10,7 @@
         <module>springboot-activiti</module>
 		<module>learn-netty</module>
         <module>redis-lock</module>
+        <module>leetcode-test</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
