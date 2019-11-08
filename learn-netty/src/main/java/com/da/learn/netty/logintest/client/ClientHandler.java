@@ -4,6 +4,8 @@ import com.da.learn.netty.protocol.Packet;
 import com.da.learn.netty.protocol.PacketCodeC;
 import com.da.learn.netty.protocol.request.LoginRequestPacket;
 import com.da.learn.netty.protocol.response.LoginResponsePacket;
+import com.da.learn.netty.protocol.response.MessageResponsePacket;
+import com.da.learn.netty.util.LoginUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -40,9 +42,13 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
 
             if (loginResponsePacket.getSuccess()) {
                 System.out.println(new Date() + ": 客户端登录成功");
+                LoginUtil.markAsLogin(ctx.channel());
             } else {
                 System.out.println(new Date() + ": 客户端登录失败，原因：" + loginResponsePacket.getReason());
             }
+        } else if (packet instanceof MessageResponsePacket) {
+            MessageResponsePacket messageResponsePacket = (MessageResponsePacket) packet;
+            System.out.println(new Date() + ": 收到服务端的消息: " + messageResponsePacket.getMessage());
         }
 
     }
