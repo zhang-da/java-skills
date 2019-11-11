@@ -1,4 +1,4 @@
-package com.da.learn.netty.logintest.server;
+package com.da.learn.netty.test.logintest.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;

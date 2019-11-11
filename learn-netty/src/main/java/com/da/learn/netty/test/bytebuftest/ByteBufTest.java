@@ -1,4 +1,4 @@
-package com.da.learn.netty.bytebuftest;
+package com.da.learn.netty.test.bytebuftest;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;

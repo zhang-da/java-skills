@@ -28,6 +28,19 @@ public class PacketCodeC {
         return byteBuf;
     }
 
+    public static void encode(ByteBuf byteBuf, Packet packet) {
+        // 1. 序列化 java 对象
+        byte[] bytes = Serializer.DEFAULT.serialize(packet);
+
+        // 2. 实际编码过程
+        byteBuf.writeInt(MAGIC_NUMBER);
+        byteBuf.writeByte(packet.getVersion());
+        byteBuf.writeByte(Serializer.DEFAULT.getSerializerAlgorithm());
+        byteBuf.writeByte(packet.getCommand());
+        byteBuf.writeInt(bytes.length);
+        byteBuf.writeBytes(bytes);
+    }
+
     public static Packet decode(ByteBuf byteBuf) {
         int magicNum = byteBuf.readInt();
         if (!Objects.equals(MAGIC_NUMBER, magicNum)) {

@@ -1,4 +1,4 @@
-package com.da.learn.netty.logintest.server;
+package com.da.learn.netty.test.logintest.server;
 
 import com.da.learn.netty.protocol.Packet;
 import com.da.learn.netty.protocol.PacketCodeC;

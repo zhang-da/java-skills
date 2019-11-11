@@ -9,6 +9,13 @@ public class MessageRequestPacket extends Packet {
 
     private String message;
 
+    public MessageRequestPacket(String message) {
+        this.message = message;
+    }
+
+    public MessageRequestPacket() {
+    }
+
     @Override
     public Byte getCommand() {
         return CommandEnum.MESSAGE_REQUEST.getCommand();

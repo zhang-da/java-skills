@@ -1,4 +1,4 @@
-package com.da.learn.netty.sockettest;
+package com.da.learn.netty.test.sockettest;
 
 import java.io.IOException;
 import java.net.Socket;
