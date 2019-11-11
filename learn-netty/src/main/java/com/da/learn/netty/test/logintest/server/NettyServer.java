@@ -6,6 +6,10 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.FixedLengthFrameDecoder;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LineBasedFrameDecoder;
 
 import java.util.Date;
 
@@ -18,6 +22,14 @@ public class NettyServer {
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
 
         ServerBootstrap bootstrap = new ServerBootstrap();
+
+        FixedLengthFrameDecoder fixedLengthFrameDecoder;
+
+        LineBasedFrameDecoder lineBasedFrameDecoder;
+
+        DelimiterBasedFrameDecoder delimiterBasedFrameDecoder;
+
+        LengthFieldBasedFrameDecoder lengthFieldBasedFrameDecoder;
 
         bootstrap.group(boosGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
