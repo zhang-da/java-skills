@@ -3,17 +3,73 @@ package com.da.learn.leetcode;
 public class SearchMatrix {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        boolean result = searchMatrix1(new int[][]{{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}}, 5);
+        boolean result = searchMatrix3(new int[][]{{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}}, 5);
         System.out.println(result);
         long end = System.currentTimeMillis();
         System.out.println("执行时间：" + (end - start));
     }
 
     private static boolean searchMatrix1(int[][] matrix, int target) {
+        if (matrix.length == 0) {
+            return false;
+        }
+        for (int[] ints : matrix) {
+            int lineLength = ints.length;
+            if (lineLength == 0) {
+                continue;
+            }
+            if (target >= ints[0] && target <= ints[lineLength - 1]) {
+                for (int anInt : ints) {
+                    if (target == anInt) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     *以左下角的数为基准，小于目标值，则向右移动，大于目标值，则向上移动
+     */
+    private static boolean searchMatrix2(int[][] matrix, int target) {
+        int row = matrix.length-1;
+        int col = 0;
+        while (row>=0 && col<=matrix[0].length-1){
+            if (matrix[row][col] == target){
+                return true;
+            }else if (matrix[row][col] > target){
+                row--;
+            }else{
+                col++;
+            }
+        }
 
         return false;
     }
+
+    /**
+     * 每一行使用二分法
+     */
+    private static boolean searchMatrix3(int[][] matrix, int target) {
+        for (int[] ints : matrix) {
+            int left = 0;
+            int right = ints.length - 1;
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                if (ints[mid] > target) {
+                    right = mid - 1;
+                } else if (ints[mid] < target) {
+                    left = mid + 1;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
+
 /**
  * 编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target。该矩阵具有以下特性：
  * <p>
