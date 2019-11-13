@@ -22,7 +22,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         // 创建登录对象
         LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
         loginRequestPacket.setUserId(UUID.randomUUID().toString());
-        loginRequestPacket.setUsername("flash");
+        loginRequestPacket.setUserName("flash");
         loginRequestPacket.setPassword("pwd");
 
         // 编码

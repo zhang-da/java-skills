@@ -83,7 +83,7 @@ public class PacketCodeC {
         LoginRequestPacket packet = new LoginRequestPacket();
         packet.setVersion((byte) 1);
         packet.setUserId("1");
-        packet.setUsername("da");
+        packet.setUserName("da");
         packet.setPassword("password");
         ByteBuf encode = PacketCodeC.encode(ByteBufAllocator.DEFAULT, packet);
         Packet decode = PacketCodeC.decode(encode);

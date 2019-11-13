@@ -3,6 +3,8 @@ package com.da.learn.netty.server;
 import com.da.learn.netty.codec.PacketDecoder;
 import com.da.learn.netty.codec.PacketEncoder;
 import com.da.learn.netty.codec.Spliter;
+import com.da.learn.netty.server.handler.AuthHandler;
+import com.da.learn.netty.server.handler.LifeCyCleTestHandler;
 import com.da.learn.netty.server.handler.LoginRequestHandler;
 import com.da.learn.netty.server.handler.MessageRequestHandler;
 import io.netty.bootstrap.ServerBootstrap;
@@ -31,11 +33,13 @@ public class NettyServer {
                 .childOption(ChannelOption.TCP_NODELAY, true)
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     protected void initChannel(NioSocketChannel ch) {
+//                        ch.pipeline().addLast(new LifeCyCleTestHandler());
                         //拆包
 //                        ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(new PacketDecoder());
                         ch.pipeline().addLast(new LoginRequestHandler());
+                        ch.pipeline().addLast(new AuthHandler());
                         ch.pipeline().addLast(new MessageRequestHandler());
                         ch.pipeline().addLast(new PacketEncoder());
                     }
