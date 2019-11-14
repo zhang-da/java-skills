@@ -24,7 +24,8 @@ public class SessionUtil {
     }
 
     public static boolean hasLogin(Channel channel) {
-        return channel.hasAttr(Attributes.SESSION);
+        Session session = channel.attr(Attributes.SESSION).get();
+        return session != null;
     }
 
     public static Session getSession(Channel channel) {

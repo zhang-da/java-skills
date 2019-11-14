@@ -1,16 +1,24 @@
 package com.da.learn.netty.protocol.command;
 
-import com.da.learn.netty.protocol.request.LoginRequestPacket;
 import com.da.learn.netty.protocol.Packet;
+import com.da.learn.netty.protocol.request.CreateGroupRequestPacket;
+import com.da.learn.netty.protocol.request.LoginRequestPacket;
+import com.da.learn.netty.protocol.request.LogoutRequestPacket;
 import com.da.learn.netty.protocol.request.MessageRequestPacket;
+import com.da.learn.netty.protocol.response.CreateGroupResponsePacket;
 import com.da.learn.netty.protocol.response.LoginResponsePacket;
+import com.da.learn.netty.protocol.response.LogoutResponsePacket;
 import com.da.learn.netty.protocol.response.MessageResponsePacket;
 
 public enum CommandEnum {
     LOGIN_REQUEST((byte) 1, LoginRequestPacket.class),
     LOGIN_RESPONSE((byte) 2, LoginResponsePacket.class),
     MESSAGE_REQUEST((byte) 3, MessageRequestPacket.class),
-    MESSAGE_RESPONSE((byte) 4, MessageResponsePacket.class);
+    MESSAGE_RESPONSE((byte) 4, MessageResponsePacket.class),
+    LOGOUT_REQUEST((byte) 5, LogoutRequestPacket.class),
+    LOGOUT_RESPONSE((byte) 6, LogoutResponsePacket.class),
+    CREATE_GROUP_REQUEST((byte) 7, CreateGroupRequestPacket.class),
+    CREATE_GROUP_RESPONSE((byte) 8, CreateGroupResponsePacket.class);
 
     private Byte command;
     private Class<? extends Packet> packetClazz;

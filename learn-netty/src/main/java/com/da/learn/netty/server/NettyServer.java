@@ -3,10 +3,7 @@ package com.da.learn.netty.server;
 import com.da.learn.netty.codec.PacketDecoder;
 import com.da.learn.netty.codec.PacketEncoder;
 import com.da.learn.netty.codec.Spliter;
-import com.da.learn.netty.server.handler.AuthHandler;
-import com.da.learn.netty.server.handler.LifeCyCleTestHandler;
-import com.da.learn.netty.server.handler.LoginRequestHandler;
-import com.da.learn.netty.server.handler.MessageRequestHandler;
+import com.da.learn.netty.server.handler.*;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -41,6 +38,8 @@ public class NettyServer {
                         ch.pipeline().addLast(new LoginRequestHandler());
                         ch.pipeline().addLast(new AuthHandler());
                         ch.pipeline().addLast(new MessageRequestHandler());
+                        ch.pipeline().addLast(new CreateGroupRequestHandler());
+                        ch.pipeline().addLast(new LogoutRequestHandler());
                         ch.pipeline().addLast(new PacketEncoder());
                     }
                 });
