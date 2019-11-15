@@ -2,10 +2,7 @@ package com.da.learn.netty.client;
 
 import com.da.learn.netty.client.console.ConsoleCommandManager;
 import com.da.learn.netty.client.console.LoginConsoleCommand;
-import com.da.learn.netty.client.handler.CreateGroupResponseHandler;
-import com.da.learn.netty.client.handler.LoginResponseHandler;
-import com.da.learn.netty.client.handler.LogoutResponseHandler;
-import com.da.learn.netty.client.handler.MessageResponseHandler;
+import com.da.learn.netty.client.handler.*;
 import com.da.learn.netty.codec.PacketDecoder;
 import com.da.learn.netty.codec.PacketEncoder;
 import com.da.learn.netty.codec.Spliter;
@@ -50,6 +47,10 @@ public class NettyClient {
                         ch.pipeline().addLast(new LogoutResponseHandler());
                         ch.pipeline().addLast(new MessageResponseHandler());
                         ch.pipeline().addLast(new CreateGroupResponseHandler());
+                        ch.pipeline().addLast(new JoinGroupResponseHandler());
+                        ch.pipeline().addLast(new QuitGroupResponseHandler());
+                        ch.pipeline().addLast(new ListGroupMembersResponseHandler());
+                        ch.pipeline().addLast(new GroupMessageResponseHandler());
                         ch.pipeline().addLast(new PacketEncoder());
                     }
                 });

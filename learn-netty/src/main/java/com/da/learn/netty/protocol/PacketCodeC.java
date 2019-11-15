@@ -42,11 +42,8 @@ public class PacketCodeC {
     }
 
     public static Packet decode(ByteBuf byteBuf) {
-        int magicNum = byteBuf.readInt();
-        if (!Objects.equals(MAGIC_NUMBER, magicNum)) {
-            System.out.println("magic_num有误");
-            return null;
-        }
+        // 跳过 magic number
+        byteBuf.skipBytes(4);
         // 跳过版本号
         byteBuf.skipBytes(1);
 

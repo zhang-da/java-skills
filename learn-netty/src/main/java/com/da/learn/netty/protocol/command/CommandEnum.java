@@ -1,14 +1,8 @@
 package com.da.learn.netty.protocol.command;
 
 import com.da.learn.netty.protocol.Packet;
-import com.da.learn.netty.protocol.request.CreateGroupRequestPacket;
-import com.da.learn.netty.protocol.request.LoginRequestPacket;
-import com.da.learn.netty.protocol.request.LogoutRequestPacket;
-import com.da.learn.netty.protocol.request.MessageRequestPacket;
-import com.da.learn.netty.protocol.response.CreateGroupResponsePacket;
-import com.da.learn.netty.protocol.response.LoginResponsePacket;
-import com.da.learn.netty.protocol.response.LogoutResponsePacket;
-import com.da.learn.netty.protocol.response.MessageResponsePacket;
+import com.da.learn.netty.protocol.request.*;
+import com.da.learn.netty.protocol.response.*;
 
 public enum CommandEnum {
     LOGIN_REQUEST((byte) 1, LoginRequestPacket.class),
@@ -18,7 +12,15 @@ public enum CommandEnum {
     LOGOUT_REQUEST((byte) 5, LogoutRequestPacket.class),
     LOGOUT_RESPONSE((byte) 6, LogoutResponsePacket.class),
     CREATE_GROUP_REQUEST((byte) 7, CreateGroupRequestPacket.class),
-    CREATE_GROUP_RESPONSE((byte) 8, CreateGroupResponsePacket.class);
+    CREATE_GROUP_RESPONSE((byte) 8, CreateGroupResponsePacket.class),
+    LIST_GROUP_MEMBERS_REQUEST((byte) 9, ListGroupMembersRequestPacket.class),
+    LIST_GROUP_MEMBERS_RESPONSE((byte) 10, ListGroupMembersResponsePacket.class),
+    JOIN_GROUP_REQUEST((byte) 11, JoinGroupRequestPacket.class),
+    JOIN_GROUP_RESPONSE((byte) 12, JoinGroupResponsePacket.class),
+    QUIT_GROUP_REQUEST((byte) 13, QuitGroupRequestPacket.class),
+    QUIT_GROUP_RESPONSE((byte) 14, QuitGroupResponsePacket.class),
+    GROUP_MESSAGE_REQUEST((byte)15, GroupMessageRequestPacket.class),
+    GROUP_MESSAGE_RESPONSE((byte)16, GroupMessageResponsePacket.class);
 
     private Byte command;
     private Class<? extends Packet> packetClazz;
