@@ -3,11 +3,17 @@ package com.da.learn.netty.server.handler;
 import com.da.learn.netty.protocol.request.JoinGroupRequestPacket;
 import com.da.learn.netty.protocol.response.JoinGroupResponsePacket;
 import com.da.learn.netty.util.SessionUtil;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 
+// 1. 加上注解标识，表明该 handler 是可以多个 channel 共享的
+@ChannelHandler.Sharable
 public class JoinGroupRequestHandler extends SimpleChannelInboundHandler<JoinGroupRequestPacket> {
+
+    public static final JoinGroupRequestHandler INSTANCE = new JoinGroupRequestHandler();
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, JoinGroupRequestPacket msg) throws Exception {
         JoinGroupResponsePacket responsePacket = new JoinGroupResponsePacket();

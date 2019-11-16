@@ -3,11 +3,17 @@ package com.da.learn.netty.server.handler;
 import com.da.learn.netty.protocol.request.QuitGroupRequestPacket;
 import com.da.learn.netty.protocol.response.QuitGroupResponsePacket;
 import com.da.learn.netty.util.SessionUtil;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 
+// 1. 加上注解标识，表明该 handler 是可以多个 channel 共享的
+@ChannelHandler.Sharable
 public class QuitGroupRequestHandler extends SimpleChannelInboundHandler<QuitGroupRequestPacket> {
+
+    public static final QuitGroupRequestHandler INSTANCE = new QuitGroupRequestHandler();
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, QuitGroupRequestPacket msg) throws Exception {
         QuitGroupResponsePacket responsePacket = new QuitGroupResponsePacket();

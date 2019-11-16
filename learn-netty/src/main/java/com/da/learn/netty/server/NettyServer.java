@@ -1,5 +1,6 @@
 package com.da.learn.netty.server;
 
+import com.da.learn.netty.codec.PacketCodecHandler;
 import com.da.learn.netty.codec.PacketDecoder;
 import com.da.learn.netty.codec.PacketEncoder;
 import com.da.learn.netty.codec.Spliter;
@@ -33,17 +34,10 @@ public class NettyServer {
                         //拆包
 //                        ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         ch.pipeline().addLast(new Spliter());
-                        ch.pipeline().addLast(new PacketDecoder());
-                        ch.pipeline().addLast(new LoginRequestHandler());
-                        ch.pipeline().addLast(new AuthHandler());
-                        ch.pipeline().addLast(new MessageRequestHandler());
-                        ch.pipeline().addLast(new CreateGroupRequestHandler());
-                        ch.pipeline().addLast(new JoinGroupRequestHandler());
-                        ch.pipeline().addLast(new QuitGroupRequestHandler());
-                        ch.pipeline().addLast(new LogoutRequestHandler());
-                        ch.pipeline().addLast(new ListGroupMembersRequestHandler());
-                        ch.pipeline().addLast(new GroupMessageRequestHandler());
-                        ch.pipeline().addLast(new PacketEncoder());
+                        ch.pipeline().addLast(PacketCodecHandler.INSTANCE);
+                        ch.pipeline().addLast(LoginRequestHandler.INSTANCE);
+                        ch.pipeline().addLast(AuthHandler.INSTANCE);
+                        ch.pipeline().addLast(IMHandler.INSTANCE);
                     }
                 });
 

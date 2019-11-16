@@ -5,6 +5,7 @@ import com.da.learn.netty.protocol.response.ListGroupMembersResponsePacket;
 import com.da.learn.netty.session.Session;
 import com.da.learn.netty.util.SessionUtil;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -13,7 +14,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// 1. 加上注解标识，表明该 handler 是可以多个 channel 共享的
+@ChannelHandler.Sharable
 public class ListGroupMembersRequestHandler extends SimpleChannelInboundHandler<ListGroupMembersRequestPacket> {
+
+    public static final ListGroupMembersRequestHandler INSTANCE = new ListGroupMembersRequestHandler();
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ListGroupMembersRequestPacket msg) throws Exception {
         ListGroupMembersResponsePacket responsePacket = new ListGroupMembersResponsePacket();
