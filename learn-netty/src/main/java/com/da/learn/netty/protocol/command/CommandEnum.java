@@ -22,7 +22,9 @@ public enum CommandEnum {
     QUIT_GROUP_REQUEST((byte) 13, QuitGroupRequestPacket.class, QuitGroupRequestHandler.INSTANCE),
     QUIT_GROUP_RESPONSE((byte) 14, QuitGroupResponsePacket.class, null),
     GROUP_MESSAGE_REQUEST((byte)15, GroupMessageRequestPacket.class, GroupMessageRequestHandler.INSTANCE),
-    GROUP_MESSAGE_RESPONSE((byte)16, GroupMessageResponsePacket.class, null);
+    GROUP_MESSAGE_RESPONSE((byte)16, GroupMessageResponsePacket.class, null),
+    HEARTBEAT_REQUEST((byte)17, HeartBeatRequestPacket.class, null),
+    HEARTBEAT_RESPONSE((byte)18, HeartBeatResponsePacket.class, null);
 
     private Byte command;
     private Class<? extends Packet> packetClazz;

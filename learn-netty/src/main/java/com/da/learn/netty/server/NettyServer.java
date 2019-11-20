@@ -1,9 +1,8 @@
 package com.da.learn.netty.server;
 
 import com.da.learn.netty.codec.PacketCodecHandler;
-import com.da.learn.netty.codec.PacketDecoder;
-import com.da.learn.netty.codec.PacketEncoder;
 import com.da.learn.netty.codec.Spliter;
+import com.da.learn.netty.handler.IMIdleStateHandler;
 import com.da.learn.netty.server.handler.*;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
@@ -33,9 +32,12 @@ public class NettyServer {
 //                        ch.pipeline().addLast(new LifeCyCleTestHandler());
                         //拆包
 //                        ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
+                        //空闲检测
+                        ch.pipeline().addLast(new IMIdleStateHandler());
                         ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(PacketCodecHandler.INSTANCE);
                         ch.pipeline().addLast(LoginRequestHandler.INSTANCE);
+                        ch.pipeline().addLast(HeartBeatRequestHandler.INSTANCE);
                         ch.pipeline().addLast(AuthHandler.INSTANCE);
                         ch.pipeline().addLast(IMHandler.INSTANCE);
                     }
