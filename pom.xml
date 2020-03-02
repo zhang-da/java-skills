@@ -13,7 +13,8 @@
         <module>leetcode-test</module>
         <module>common-utils</module>
         <module>springboot-excel</module>
-    </modules>
+		<module>springboot-ip-alert</module>
+	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

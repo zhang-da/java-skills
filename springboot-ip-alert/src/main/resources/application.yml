@@ -1,0 +1,24 @@
+spring:
+  mail:
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    protocol: smtp
+    username:
+    password:
+  smtp:
+    auth: true
+    starttls:
+      enable: true
+      required: true
+
+alert:
+  mail:
+    from: ${spring.mail.username}
+    to: flyingzd@qq.com
+    subject: IP变动
+
+ip:
+  obtain:
+    error:
+      max_time: 2
+    obtainer: urlIp42IpObtainer
