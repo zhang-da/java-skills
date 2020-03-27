@@ -28,13 +28,13 @@ public class URLIpAlertHandler implements IpAlertHandler {
         String oldIp = ipObtainer.obtainOld();
         String newIp = ipObtainer.obtainNew();
         Alerter alerter = new Alerter(emailAlert);
-        if (StringUtils.isEmpty(newIp) || newIp.equals(IpObtainer.ERROR_IP)) {
+        if (StringUtils.isEmpty(newIp) || newIp.startsWith(IpObtainer.ERROR_IP)) {
             String errorTime = Cache.get(Cache.CacheType.WRONG_IP_TIMES);
             if (StringUtils.isEmpty(errorTime)) {
                 return;
             }
+            alerter.alert("获取ip出错，次数：".concat(errorTime).concat("。\n").concat(newIp));
             if (Integer.parseInt(errorTime) >= maxIpObtainErrorTime) {
-                alerter.alert("获取ip出错，次数：".concat(errorTime));
                 Cache.del(Cache.CacheType.WRONG_IP_TIMES);
             }
             return;

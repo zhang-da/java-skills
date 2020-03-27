@@ -25,12 +25,12 @@ public class Job {
     @Resource
     private IpAlertHandler ipAlertHandler;
 
-    @Scheduled(cron = "0/1 * * * * ? ")
+    @Scheduled(cron = "* * * * * ? ")
     public void runIpAlert() {
         try {
             pool.execute(() -> {
                 log.info("触发：{}", LocalDateTime.now().toString());
-                ipAlertHandler.handle();
+//                ipAlertHandler.handle();
             });
         } catch (Throwable e) {
             log.error("出错了：{}", e);

@@ -1,16 +1,13 @@
-package com.da.learn.ipalert;
+package com.da.learn.swagger.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Slf4j
 public class TestController {
 
-    @RequestMapping(value = "hello")
+    @RequestMapping("/**")
     public String test() {
-        log.info("hello");
-        return "success";
+        return "ok";
     }
 }

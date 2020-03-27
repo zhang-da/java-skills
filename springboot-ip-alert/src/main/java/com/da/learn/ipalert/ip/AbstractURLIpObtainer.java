@@ -19,7 +19,7 @@ public abstract class AbstractURLIpObtainer implements IpObtainer {
         String ip = getIpByResponseBody(responseBody);
         if (!StringCheckTool.checkIp(ip)) {
             handleError();
-            return ERROR_IP;
+            return ERROR_IP.concat(":").concat(ip);
         }
         return ip;
     }
@@ -38,7 +38,7 @@ public abstract class AbstractURLIpObtainer implements IpObtainer {
         try {
             return restTemplate.getForObject(url, String.class);
         } catch (RestClientException e) {
-            return null;
+            return e.toString();
         }
     }
 
