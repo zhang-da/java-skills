@@ -1,4 +1,7 @@
-package com.da.learn.learnboot.maintainpush;
+package com.da.learn.learnboot.maintainpush.maintain.core;
+
+import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractMaintainRule<T extends Comparable<? super T>> implements MaintainRule {
 
@@ -25,10 +28,31 @@ public abstract class AbstractMaintainRule<T extends Comparable<? super T>> impl
 
     /**
      * 如果在某时间段已经产生过保养信息，是否重复产生
+     *
      * @return
      */
     @Override
     public abstract boolean willRepeat();
+
+
+    /**
+     * 获取需要保养提醒的范围
+     *
+     * @param currentPoint  当前判断点
+     * @param toNexDistance 到下已判断点距离
+     * @return
+     */
+    protected abstract List<Range<T>> obtainRange(T currentPoint, T toNexDistance, int stage);
+
+    /**
+     * 组装附属信息
+     *
+     * @param vehicle
+     * @param maintainItem
+     * @param mileageRange
+     * @return
+     */
+    protected abstract Map<String, String> obtainAdditional(MaintainVehicle vehicle, MaintainItem maintainItem, Range<T> range);
 
     protected enum JudgeResultType {
         /**

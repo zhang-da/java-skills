@@ -1,16 +1,23 @@
 package com.da.learn.learnboot;
 
+import com.alibaba.excel.EasyExcel;
+import com.da.learn.learnboot.maintainpush.excel.MaintainItemRepository;
+import com.da.learn.learnboot.maintainpush.excel.NoModelDataListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
 
-    @RequestMapping("/**")
-    public String test() {
-        StackTraceElement[] stackTrace = new RuntimeException().getStackTrace();
-        System.out.println(stackTrace);
+//    @Autowired
+//    private MaintainItemRepository maintainItemRepository;
 
+    @RequestMapping("/excel")
+    public String test() {
+//        String fileName = "D:\\迭代\\V2.26\\长春J7保养提醒new.xlsx";
+//        // 这里 只要，然后读取第一个sheet 同步读取会自动finish
+//        EasyExcel.read(fileName, new NoModelDataListener(maintainItemRepository)).sheet(1).headRowNumber(2).doRead();
         return "ok";
     }
 }

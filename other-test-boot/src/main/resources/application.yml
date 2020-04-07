@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    #            driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.30.50.22:3306/da_test?autoReconnect=true&allowMultiQueries=true
+    #            url: jdbc:mysql://localhost:3306/renren_fast?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: qingqi153
+    password: 6DuQBNlfa6dTwaY2gQQd8rPk
+    hikari:
+      # \u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570\u91CF
+      minimum-idle: 5
+      connection-test-query: SELECT 1 FROM DUAL
+      # \u8FDE\u63A5\u6C60\u6700\u5927\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4\u662F10
+      maximum-pool-size: 20
+      # \u6B64\u5C5E\u6027\u63A7\u5236\u4ECE\u6C60\u8FD4\u56DE\u7684\u8FDE\u63A5\u7684\u9ED8\u8BA4\u81EA\u52A8\u63D0\u4EA4\u884C\u4E3A,\u9ED8\u8BA4\u503C\uFF1Atrue
+      auto-commit: true
+      # \u7A7A\u95F2\u8FDE\u63A5\u5B58\u6D3B\u6700\u5927\u65F6\u95F4\uFF0C\u9ED8\u8BA4600000\uFF0810\u5206\u949F\uFF09
+      idle-timeout: 30000
+      # \u8FDE\u63A5\u6C60\u540D\u5B57
+      pool-name: SpringBootHikariCP
+      # \u6B64\u5C5E\u6027\u63A7\u5236\u6C60\u4E2D\u8FDE\u63A5\u7684\u6700\u957F\u751F\u547D\u5468\u671F\uFF0C\u503C0\u8868\u793A\u65E0\u9650\u751F\u547D\u5468\u671F\uFF0C\u9ED8\u8BA41800000\u537330\u5206\u949F
+      max-lifetime: 60000
+      # \u6570\u636E\u5E93\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4,\u9ED8\u8BA430\u79D2\uFF0C\u537330000
+      connection-timeout: 30000
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+
+#  spring.jpa.show-sql=true
+#  spring.datasource.jpa.generate-ddl=true
+#  spring.jpa.hibernate.ddl-auto=update
+
+
+#\u94FE\u63A5\u6C60\u53C2\u8003\uFF1Ahttps://github.com/brettwooldridge/HikariCP
