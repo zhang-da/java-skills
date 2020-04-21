@@ -3,6 +3,7 @@ package com.da.learn.learnboot.maintainpush.maintain;
 import com.da.learn.learnboot.maintainpush.maintain.core.MaintainItem;
 import com.da.learn.learnboot.maintainpush.maintain.core.MaintainVehicle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,5 +31,21 @@ public class CarForMaintainJudge implements MaintainVehicle {
     @Override
     public Integer getDayAfterAak() {
         return this.dayAfterAak;
+    }
+
+    public CarForMaintainJudge() {
+        this.maintainItemList = new ArrayList<>();
+    }
+
+    public void setMileage(Double mileage) {
+        this.mileage = mileage;
+    }
+
+    public void setDayAfterAak(Integer dayAfterAak) {
+        this.dayAfterAak = dayAfterAak;
+    }
+
+    public void addItem(MaintainItem item) {
+        this.maintainItemList.add(item);
     }
 }

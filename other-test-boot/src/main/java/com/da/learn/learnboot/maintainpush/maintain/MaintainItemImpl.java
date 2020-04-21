@@ -1,9 +1,11 @@
 package com.da.learn.learnboot.maintainpush.maintain;
 
+import com.da.learn.learnboot.maintainpush.maintain.core.MaintainItem;
+
 /**
  * 需根据需求定制
  */
-public class MaintainItemImpl {
+public class MaintainItemImpl implements MaintainItem {
     private Double firstMileage;
     private Double regularMileage;
     private Double lastMileage;

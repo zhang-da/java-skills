@@ -1,20 +1,19 @@
 package com.da.learn;
 
+import com.da.learn.learnboot.maintainpush.excel.MaintainItem;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Test implements Cloneable {
     private int anInt;
 
     public static void main(String[] args) throws Exception {
-        Set<String> setabc = new HashSet<>();
-        setabc.add("test");
-        setabc.add("哈哈");
-        setabc.add("test");
-        setabc.add("哈哈2");
-        System.out.println(StringUtils.join(setabc, ","));
+        String abc = "123456789";
+
+        System.out.println(abc.substring(0, 10));
+
 
         StackTraceElement[] stackTrace = new RuntimeException().getStackTrace();
         for (StackTraceElement stackTraceElement : stackTrace) {

@@ -24,7 +24,7 @@ public class DefaultRegularByMileageMaintainRule extends RegularByMileageMaintai
     @Override
     protected List<Range<Double>> obtainRange(Double currentPoint, Double toNexDistance, int stage) {
         List<Range<Double>> mileageRangeList = new ArrayList<>();
-        mileageRangeList.add(new Range<>(stage, 1, currentPoint - BEFORE_REGULAR, toNexDistance));
+        mileageRangeList.add(new Range<>(stage, 1, currentPoint - BEFORE_REGULAR, currentPoint));
         mileageRangeList.add(new Range<>(stage, 2, currentPoint, currentPoint + toNexDistance - BEFORE_REGULAR));
         return mileageRangeList;
     }
