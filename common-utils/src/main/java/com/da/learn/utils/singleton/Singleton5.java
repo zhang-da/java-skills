@@ -2,7 +2,7 @@ package com.da.learn.utils.singleton;
 
 /**
  * 懒汉式，双重检查模式
- * volatile很关键 防止重排序 未完成初始化 时被另一个线程调用
+ * volatile很关键 防止重排序 未完成初始化(new Singleton()) 时被另一个线程调用
  */
 public class Singleton5 {
     private static volatile Singleton5 singleton5;
