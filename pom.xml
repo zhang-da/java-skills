@@ -16,7 +16,8 @@
 		<module>springboot-ip-alert</module>
         <module>springboot-swagger</module>
         <module>springboot-swagger-beauty</module>
-    </modules>
+		<module>learn-concurrent</module>
+	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

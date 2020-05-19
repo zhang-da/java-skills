@@ -1,4 +1,4 @@
-package com.da.learn.learnboot.thread;
+package com.da.learn.concurrent.thread;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
