@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 
-//    @Autowired
-//    private MaintainItemRepository maintainItemRepository;
+    @Autowired
+    private MaintainItemRepository maintainItemRepository;
 
     @RequestMapping("/excel")
     public String test() {
-//        String fileName = "D:\\迭代\\V2.26\\长春J7保养提醒new.xlsx";
-//        // 这里 只要，然后读取第一个sheet 同步读取会自动finish
-//        EasyExcel.read(fileName, new NoModelDataListener(maintainItemRepository)).sheet(1).headRowNumber(2).doRead();
+        String fileName = "D:\\迭代\\V2.26\\长春保养提醒（20200521）.xlsx";
+        // 这里 只要，然后读取第一个sheet 同步读取会自动finish
+        EasyExcel.read(fileName, new NoModelDataListener(maintainItemRepository)).sheet(1).headRowNumber(3).doRead();
         return "ok";
     }
 }

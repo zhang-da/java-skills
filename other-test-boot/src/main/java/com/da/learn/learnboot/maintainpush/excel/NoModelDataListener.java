@@ -42,7 +42,8 @@ public class NoModelDataListener extends AnalysisEventListener<Map<Integer, Stri
             maintainItem.setModelCode(modelCode);
             maintainItem.setItemCode(i);
             String itemName = headMapList.get(1).get(i);
-            maintainItem.setItemName(itemName.substring(0, itemName.indexOf("（")));
+//            maintainItem.setItemName(itemName.substring(0, itemName.indexOf("（")));
+            maintainItem.setItemName(itemName);
             if (i == 1 || i == 2 || i == 3) {
                 maintainItem.setTypeCode(1);
                 maintainItem.setTypeName(headMapList.get(0).get(1));

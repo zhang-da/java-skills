@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * BIO 阻塞io
+ */
 public class IOServer {
     public static void main(String[] args) throws Exception {
         ServerSocket serverSocket = new ServerSocket(8000);
