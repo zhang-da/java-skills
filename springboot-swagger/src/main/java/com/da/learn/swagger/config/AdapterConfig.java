@@ -3,6 +3,7 @@ package com.da.learn.swagger.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
@@ -10,9 +11,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * <p>
  * Created by Daniel on 2019/7/30.
  */
-@EnableWebMvc
+//@EnableWebMvc
 @Configuration
-public class AdapterConfig extends WebMvcConfigurerAdapter {
+public class AdapterConfig implements WebMvcConfigurer {
 
 
     @Override
@@ -22,6 +23,5 @@ public class AdapterConfig extends WebMvcConfigurerAdapter {
         //swagger2
         registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-        super.addResourceHandlers(registry);
     }
 }
