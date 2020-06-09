@@ -21,6 +21,7 @@
 		<module>springcloud-eurekaServer</module>
 		<module>springcloud-serviceA</module>
 		<module>springcloud-serviceB</module>
+		<module>learn-javafx</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
