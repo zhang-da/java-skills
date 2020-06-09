@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+
+spring:
+  application:
+    name: serviceB
+
+eureka:
+  instance:
+    instance-id: serviceB
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
