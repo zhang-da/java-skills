@@ -4,9 +4,8 @@ import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLView;
 
 /**
- * 主界面
- * @author
+ * 登录界面
  */
-@FXMLView(value = "/fxml/MainStageView.fxml")
-public class MainStageView extends AbstractFxmlView {
+@FXMLView(value = "/fxml/LoginStageView.fxml")
+public class LoginStageView extends AbstractFxmlView {
 }

@@ -1,5 +1,6 @@
 package com.da.learn.javafx;
 
+import com.da.learn.javafx.module.LoginStageView;
 import com.da.learn.javafx.module.MainStageView;
 import com.da.learn.javafx.module.TimeOutViewManager;
 import de.felixroske.jfxsupport.AbstractFxmlView;
@@ -39,7 +40,7 @@ public class Application extends AbstractJavaFxApplicationSupport {
 
     public static void main(String[] args) {
         log.info("系统启动");
-        launch(Application.class, MainStageView.class, new CustomSplash(), args);
+        launch(Application.class, LoginStageView.class, new CustomSplash(), args);
     }
 
     public static void showView(final Class<? extends AbstractFxmlView> window, final Modality mode, Object object) {
@@ -138,7 +139,7 @@ public class Application extends AbstractJavaFxApplicationSupport {
         }
     }
 
-    public static boolean hasSubscribe(Object object) {
+    private static boolean hasSubscribe(Object object) {
         Method[] subscribes = MethodUtils.getMethodsWithAnnotation(object.getClass(), Subscribe.class);
         return subscribes != null && subscribes.length > 0;
     }
@@ -147,13 +148,13 @@ public class Application extends AbstractJavaFxApplicationSupport {
     public void beforeInitialView(Stage stage, ConfigurableApplicationContext ctx) {
         Application.context = ctx;
 
-        stage.setWidth(300);
-        stage.setHeight(400);
+        stage.setWidth(800);
+        stage.setHeight(600);
         stage.setTitle("自助充值客户端");
         stage.initStyle(StageStyle.UNDECORATED);
         if (System.getProperty("dev") == null) {
             stage.setAlwaysOnTop(true);
-            stage.setFullScreen(true);
+            stage.setFullScreen(false);
         }
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
