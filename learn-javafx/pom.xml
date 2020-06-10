@@ -11,12 +11,27 @@
 
     <artifactId>learn-javafx</artifactId>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <bootstrapfx-core.version>0.2.4</bootstrapfx-core.version>
+        <springboot-javafx-support.version>2.1.6</springboot-javafx-support.version>
+        <testfx.version>4.0.5-alpha</testfx.version>
+        <monocle.version>8u20-b26</monocle.version>
+    </properties>
+
     <dependencies>
         <dependency>
-            <groupId>com.jfoenix</groupId>
-            <artifactId>jfoenix</artifactId>
-            <version>8.0.8</version>
+            <groupId>de.roskenet</groupId>
+            <artifactId>springboot-javafx-support</artifactId>
+            <version>${springboot-javafx-support.version}</version>
         </dependency>
+
+
+<!--        <dependency>-->
+<!--            <groupId>com.jfoenix</groupId>-->
+<!--            <artifactId>jfoenix</artifactId>-->
+<!--            <version>8.0.8</version>-->
+<!--        </dependency>-->
 
 <!--        <dependency>-->
 <!--            <groupId>io.datafx</groupId>-->
@@ -28,12 +43,65 @@
 <!--            <artifactId>flow</artifactId>-->
 <!--            <version>8.0.1</version>-->
 <!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.kordamp.ikonli</groupId>-->
+<!--            <artifactId>ikonli-javafx</artifactId>-->
+<!--            <version>2.4.0</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.kordamp.ikonli</groupId>-->
+<!--            <artifactId>ikonli-fontawesome5-pack</artifactId>-->
+<!--            <version>2.4.0</version>-->
+<!--        </dependency>-->
+
         <!-- 字体图标 -->
 <!--        <dependency>-->
 <!--            <groupId>de.jensd</groupId>-->
 <!--            <artifactId>fontawesomefx</artifactId>-->
 <!--            <version>8.9</version>-->
 <!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-json</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.hibernate.validator</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-webmvc</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.greenrobot</groupId>
+            <artifactId>eventbus</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
     </dependencies>
 
 <!--    打包成jar-->
