@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Cache {
 
-    private static Map<String, String> cache = new ConcurrentHashMap<>();
+    private static volatile Map<String, String> cache = new ConcurrentHashMap<>();
 
     public static String get(CacheType cacheType) {
         return cache.get(cacheType.getKey());
