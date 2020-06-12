@@ -3,7 +3,7 @@ spring:
     default-encoding: UTF-8
     host: smtp.qq.com
     protocol: smtp
-    username:
+    username: flyingzd@qq.com
     password:
   smtp:
     auth: true
@@ -20,5 +20,13 @@ alert:
 ip:
   obtain:
     error:
-      max_time: 2
+      max_time: 1000
     obtainer: urlIp42IpObtainer
+
+logging:
+  file:
+    name: /logs/ip-alert.log
+
+task:
+  initDelay: 5000
+  delay: 1200000

@@ -2,10 +2,12 @@ package com.da.learn.ipalert.ip;
 
 import com.da.learn.ipalert.cache.Cache;
 import com.da.learn.ipalert.tools.StringCheckTool;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+@Slf4j
 public abstract class AbstractURLIpObtainer implements IpObtainer {
 
     @Override
@@ -36,7 +38,9 @@ public abstract class AbstractURLIpObtainer implements IpObtainer {
     private String getResponseByUrl(String url) {
         RestTemplate restTemplate = new RestTemplate();
         try {
-            return restTemplate.getForObject(url, String.class);
+            String result = restTemplate.getForObject(url, String.class);
+            log.info("请求：{}，返回结果：{}", url, result);
+            return result;
         } catch (RestClientException e) {
             return e.toString();
         }
