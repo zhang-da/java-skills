@@ -51,7 +51,9 @@ public class JobApplicationRunner implements ApplicationRunner {
                     delay,
                     TimeUnit.MILLISECONDS
             );
-            Thread.sleep(10000000L);
+            while (true) {
+
+            }
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
