@@ -8,4 +8,8 @@ public class PersonA {
 
     @Autowired
     PersonB personB;
+
+    public PersonB getPersonB() {
+        return personB;
+    }
 }

@@ -3,9 +3,12 @@ package com.da.learn.ipalert.ip;
 import com.da.learn.ipalert.cache.Cache;
 import com.da.learn.ipalert.tools.StringCheckTool;
 import lombok.extern.slf4j.Slf4j;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.springframework.util.StringUtils;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
+
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public abstract class AbstractURLIpObtainer implements IpObtainer {
@@ -36,12 +39,21 @@ public abstract class AbstractURLIpObtainer implements IpObtainer {
     protected abstract String getIpByResponseBody(String responseBody);
 
     private String getResponseByUrl(String url) {
-        RestTemplate restTemplate = new RestTemplate();
         try {
-            String result = restTemplate.getForObject(url, String.class);
-            log.info("请求：{}，返回结果：{}", url, result);
-            return result;
-        } catch (RestClientException e) {
+            OkHttpClient client = new OkHttpClient().newBuilder()
+                    .callTimeout(5000L, TimeUnit.MILLISECONDS)
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(url)
+                    .method("GET", null)
+                    .build();
+            Response response = client.newCall(request).execute();
+            String bodyString = response.body().string();
+            log.info("REQUEST：{}，RESULT：{}", url, bodyString);
+            return bodyString;
+        } catch (Exception e) {
+            log.error("error: {}", e);
             return e.toString();
         }
     }

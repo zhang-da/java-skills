@@ -40,9 +40,13 @@ public class JobApplicationRunner implements ApplicationRunner {
             Runnable peersUpdateTask = new Runnable() {
                 @Override
                 public void run() {
-                    log.info("触发开始：{}", LocalDateTime.now().toString());
-                    ipAlertHandler.handle();
-                    log.info("触发结束：{}", LocalDateTime.now().toString());
+                    try {
+                        log.info("START：{}", LocalDateTime.now().toString());
+                        ipAlertHandler.handle();
+                        log.info("END：{}", LocalDateTime.now().toString());
+                    } catch (Exception e) {
+                        log.error("异常：{}", e);
+                    }
                 }
             };
             taskExecutor.scheduleWithFixedDelay(
