@@ -22,6 +22,7 @@
 		<module>springcloud-serviceA</module>
 		<module>springcloud-serviceB</module>
 		<module>learn-javafx</module>
+		<module>springcloud-prometheus</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
