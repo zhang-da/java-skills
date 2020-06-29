@@ -23,7 +23,8 @@
 		<module>springcloud-serviceB</module>
 		<module>learn-javafx</module>
 		<module>springcloud-prometheus</module>
-	</modules>
+        <module>springboot-extension</module>
+    </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

@@ -26,7 +26,7 @@ public class ExcelReadTest {
      * <p>2. 由于默认一行行的读取excel，所以需要创建excel一行一行的回调监听器，参照{@link DemoDataListener}
      * <p>3. 直接读即可
      */
-    @Test
+//    @Test
     public void simpleRead1() {
         // 有个很重要的点 DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
         // 写法1：
@@ -36,7 +36,7 @@ public class ExcelReadTest {
 
     }
 
-    @Test
+//    @Test
     public void simpleRead2() {
         // 有个很重要的点 DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
         // 写法2：
@@ -55,7 +55,7 @@ public class ExcelReadTest {
      * <p>2. 由于默认一行行的读取excel，所以需要创建excel一行一行的回调监听器，参照{@link IndexOrNameDataListener}
      * <p>3. 直接读即可
      */
-    @Test
+//    @Test
     public void indexOrNameRead() {
         String fileName = "D://test1.xlsx";
         // 这里默认读取第一个sheet
@@ -71,7 +71,7 @@ public class ExcelReadTest {
      * <p>
      * 3. 直接读即可
      */
-    @Test
+//    @Test
     public void repeatedRead() {
         String fileName = "D://test1.xlsx";
         // 读取全部sheet
@@ -100,7 +100,7 @@ public class ExcelReadTest {
      * <p>2. 由于默认一行行的读取excel，所以需要创建excel一行一行的回调监听器，参照{@link ConverterDataListener}
      * <p>3. 直接读即可
      */
-    @Test
+//    @Test
     public void converterRead() {
         String fileName = "D://test1.xlsx";
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet
@@ -120,7 +120,7 @@ public class ExcelReadTest {
      * <p>3. 设置headRowNumber参数，然后读。 这里要注意headRowNumber如果不指定， 会根据你传入的class的{@link ExcelProperty#value()}里面的表头的数量来决定行数，
      * 如果不传入class则默认为1.当然你指定了headRowNumber不管是否传入class都是以你传入的为准。
      */
-    @Test
+//    @Test
     public void complexHeaderRead() {
         String fileName = "D://test1.xlsx";
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet
@@ -132,7 +132,7 @@ public class ExcelReadTest {
     /**
      * 同步的返回，不推荐使用，如果数据量大会把数据放到内存里面
      */
-    @Test
+//    @Test
     public void synchronousRead() {
         String fileName = "D://test1.xlsx";
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet 同步读取会自动finish
@@ -159,7 +159,7 @@ public class ExcelReadTest {
      * <p>
      * 3. 直接读即可
      */
-    @Test
+//    @Test
     public void headerRead() {
         String fileName = "D://test1.xlsx";
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet
@@ -176,7 +176,7 @@ public class ExcelReadTest {
      * <p>
      * 3. 直接读即可
      */
-    @Test
+//    @Test
     public void exceptionRead() {
         String fileName = "D://test1.xlsx";
         // 这里 需要指定读用哪个class去读，然后读取第一个sheet
@@ -186,7 +186,7 @@ public class ExcelReadTest {
     /**
      * 不创建对象的读，不是特别推荐使用，都用String接收对日期的支持不是很好
      */
-    @Test
+//    @Test
     public void noModelRead() {
         String fileName = "D://test1.xlsx";
         // 这里 只要，然后读取第一个sheet 同步读取会自动finish

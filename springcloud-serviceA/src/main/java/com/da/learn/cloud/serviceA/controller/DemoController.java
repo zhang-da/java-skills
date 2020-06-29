@@ -15,4 +15,9 @@ public class DemoController {
     public String getInfo() {
         return serviceBFeign.getInfo();
     }
+
+    @GetMapping("test")
+    public String test() {
+        return "test";
+    }
 }

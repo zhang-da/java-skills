@@ -7,18 +7,18 @@ import java.util.List;
 
 public class RetryUtilTest {
 
-    @Test
-    public void retry1() {
+    @Test(expected = Exception.class)
+    public void retry1() throws Exception {
         List<String> retry1 = RetryUtil.retry1(5, RetryUtilTest::foo1, (list, e) -> e != null || list == null || list.isEmpty());
     }
 
-    @Test
-    public void retry2() {
+    @Test(expected = Exception.class)
+    public void retry2() throws Exception {
         RetryUtil.retry1(5, RetryUtilTest::foo2, (s, e) -> e != null || s == null);
     }
 
     @Test
-    public void retry3() {
+    public void retry3() throws Exception {
         List<String> retry = RetryUtil.retry1(5, () -> {
             try {
                 return foo3();
@@ -31,7 +31,7 @@ public class RetryUtilTest {
         });
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void retry4() throws Exception {
         List<String> retry1 = RetryUtil.retry2(5, RetryUtilTest::foo3, (list, e) -> e != null || list == null || list.isEmpty());
     }
