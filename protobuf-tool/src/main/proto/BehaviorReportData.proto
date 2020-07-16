@@ -1,0 +1,27 @@
+option java_outer_classname = "BehaviorReportDataInfo";
+option java_package = "com.smartlink.ladybird.common.protocol";
+
+message BehaviorReportData{
+    required    uint64                      timeStamp                   =1;     //数据时间戳 （数据上传时间）
+    optional    string                      deviceId                    =2;     //设备ID  （唯一标记一个设备 imsi）
+    optional    string                      deviceModel                 =3;     //设备型号 （手机型号等）
+    optional    string                      deviceType                  =4;     //设备类型 （手机还是电脑）
+    optional    string                      appVersion                  =5;     //应用版本 （app版本）
+    optional    string                      appName                     =6;     //应用类型 （司机，车队）
+    optional    string                      systemType                  =7;     //系统类型 （ios/安卓）
+    required    string                      reportId                    =8;     //埋点ID  （唯一标记埋点业务类型）
+    required    string                      dataType                    =9;     //事件类型 （浏览事件，点击事件）
+    optional    string                      protocolVersion             =10;    //协议版本 （自身协议版本）
+    optional    string                      network                     =11;    //网络环境 （2G，4G）
+    optional    string                      ip                          =12;    //ip
+    optional    string                      longitude                   =13;    //经度
+    optional    string                      latitude                    =14;    //纬度
+    optional    string                      city                        =15;    //city   （北京）
+    optional    string                      userId                      =16;    // 用户ID  （标记当前用户唯一ID）
+    optional    string                      phone                       =17;    //手机号   (13801012020)
+    optional    uint64                      startTime                   =18;    //事件开始时间
+    optional    uint64                      endTime                     =19;    //事件结束时间
+    optional    string                      params                      =20;    //自定义的东西。
+}
+
+

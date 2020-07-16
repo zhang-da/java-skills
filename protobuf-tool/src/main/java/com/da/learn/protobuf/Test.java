@@ -1,5 +1,7 @@
 package com.da.learn.protobuf;
 
+import protocol.BehaviorReportDataInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,23 +21,29 @@ public class Test {
 //            futures.add(f);
 //        }
 
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        list.add(6);
-        list.add(7);
-        int step = 3;
-
-        for (int i = 0; i<list.size(); i += step){
-            int start = i;
-            int end = i + step > list.size() ? list.size() : i + step;
-            List<Integer> list1 = list.subList(start, end);
-            System.out.println("======");
-            System.out.println(list1);
-        }
+        BehaviorReportDataInfo.BehaviorReportData.Builder data = BehaviorReportDataInfo.BehaviorReportData.newBuilder();
+        data.setTimeStamp(System.currentTimeMillis());
+        data.setDeviceId("deviceId");
+        data.setDeviceModel("apple");
+        data.setDeviceType("phone");
+        data.setAppVersion("appVersion");
+        data.setAppName("siji");
+        data.setSystemType("ios");
+        data.setReportId("123");
+        data.setDataType("1");
+        data.setProtocolVersion("1.1.1");
+        data.setNetwork("4G");
+        data.setIp("127.0.0.1");
+        data.setLongitude("123.123");
+        data.setLatitude("39.899");
+        data.setCity("city");
+        data.setUserId("123");
+        data.setPhone("12301230123");
+        data.setStartTime(System.currentTimeMillis());
+        data.setEndTime(System.currentTimeMillis());
+        data.setParams("others");
+        BehaviorReportDataInfo.BehaviorReportData build = data.build();
+        System.out.println(build.toString());
 
 
     }

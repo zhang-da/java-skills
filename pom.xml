@@ -24,6 +24,8 @@
 		<module>learn-javafx</module>
 		<module>springcloud-prometheus</module>
         <module>springboot-extension</module>
+		<module>learn-flink</module>
+        <module>learn-spark</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
