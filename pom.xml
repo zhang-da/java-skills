@@ -14,19 +14,14 @@
         <module>common-utils</module>
         <module>springboot-excel</module>
 		<module>springboot-ip-alert</module>
-        <module>springboot-swagger</module>
-        <module>springboot-swagger-beauty</module>
 		<module>learn-concurrent</module>
         <module>springboot-reactor</module>
-		<module>springcloud-eurekaServer</module>
-		<module>springcloud-serviceA</module>
-		<module>springcloud-serviceB</module>
 		<module>learn-javafx</module>
-		<module>springcloud-prometheus</module>
         <module>springboot-extension</module>
-		<module>learn-flink</module>
-        <module>learn-spark</module>
-    </modules>
+		<module>learn-bigdata</module>
+		<module>learn-springcloud</module>
+		<module>springboot-swagger</module>
+	</modules>
 <!--    <parent>-->
 <!--		<groupId>org.springframework.boot</groupId>-->
 <!--		<artifactId>spring-boot-starter-parent</artifactId>-->

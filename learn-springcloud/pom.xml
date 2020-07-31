@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <packaging>pom</packaging>
     <parent>
         <artifactId>java-skills</artifactId>
         <groupId>com.da.learn</groupId>
@@ -9,34 +10,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springcloud-serviceA</artifactId>
+    <artifactId>learn-springcloud</artifactId>
 
     <properties>
         <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.zhang-da</groupId>
-            <artifactId>my-logging-spring-boot-starter</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>springcloud-eurekaServer</module>
+        <module>springcloud-prometheus</module>
+        <module>springcloud-serviceA</module>
+        <module>springcloud-serviceB</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -90,5 +75,6 @@
             </plugins>
         </pluginManagement>
     </build>
+
 
 </project>
