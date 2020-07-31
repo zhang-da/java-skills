@@ -11,8 +11,10 @@
 
     <artifactId>learn-javafx</artifactId>
 
+    <name>${project.artifactId}</name>
+
     <properties>
-        <java.version>1.8</java.version>
+        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
         <bootstrapfx-core.version>0.2.4</bootstrapfx-core.version>
         <springboot-javafx-support.version>2.1.6</springboot-javafx-support.version>
         <testfx.version>4.0.5-alpha</testfx.version>
@@ -104,8 +106,22 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 <!--    打包成jar-->
     <build>
+        <finalName>${project.name}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -114,12 +130,33 @@
             <plugin>
                 <groupId>com.zenjava</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.da.learn.javafx.MyApp</mainClass>
-                    <vendor>da</vendor>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <mainClass>com.da.learn.javafx.MyApp</mainClass>-->
+<!--                    <vendor>da</vendor>-->
+<!--                </configuration>-->
             </plugin>
         </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <configuration>
+                        <finalName>${project.build.finalName}</finalName>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
     </build>
 
 

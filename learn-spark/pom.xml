@@ -12,7 +12,6 @@
     <artifactId>learn-spark</artifactId>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spark.version>2.2.0</spark.version>
     </properties>
 
