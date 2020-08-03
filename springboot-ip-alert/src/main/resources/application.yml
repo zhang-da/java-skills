@@ -20,12 +20,12 @@ alert:
 ip:
   obtain:
     error:
-      max_time: 1000
+      max_time: 99999
     obtainer: urlIp42IpObtainer
 
 logging:
   file:
-    name: /home/pi/da/my_java/ip_obtain/logs/ip-alert.log
+    name: logs/ip-alert.log
 
 task:
   initDelay: 5000

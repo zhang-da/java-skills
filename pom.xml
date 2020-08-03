@@ -21,6 +21,7 @@
 		<module>learn-bigdata</module>
 		<module>learn-springcloud</module>
 		<module>springboot-swagger</module>
+		<module>learn-springcloud-alibaba</module>
 	</modules>
 <!--    <parent>-->
 <!--		<groupId>org.springframework.boot</groupId>-->

@@ -4,12 +4,14 @@ import com.da.learn.ipalert.alerter.Alert;
 import com.da.learn.ipalert.alerter.Alerter;
 import com.da.learn.ipalert.cache.Cache;
 import com.da.learn.ipalert.ip.IpObtainer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 
+@Slf4j
 @Component("urlIpAlertHandler")
 public class URLIpAlertHandler implements IpAlertHandler {
 
@@ -33,7 +35,8 @@ public class URLIpAlertHandler implements IpAlertHandler {
             if (StringUtils.isEmpty(errorTime)) {
                 return;
             }
-            alerter.alert("获取ip出错，次数：".concat(errorTime).concat("。\n").concat(newIp));
+//            alerter.alert("获取ip出错，次数：".concat(errorTime).concat("。\n").concat(newIp));
+            log.info("获取ip出错，次数：".concat(errorTime).concat("。\n").concat(newIp));
             if (Integer.parseInt(errorTime) >= maxIpObtainErrorTime) {
                 Cache.del(Cache.CacheType.WRONG_IP_TIMES);
             }
