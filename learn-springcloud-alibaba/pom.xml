@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>learn-sentinel</module>
+        <module>springcloud-alibaba-serviceA</module>
     </modules>
     <parent>
         <artifactId>java-skills</artifactId>
