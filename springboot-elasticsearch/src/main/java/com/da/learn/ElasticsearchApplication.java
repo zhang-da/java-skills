@@ -2,12 +2,10 @@ package com.da.learn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableSwagger2
 @SpringBootApplication
-public class BeautySwaggerApplication {
+public class ElasticsearchApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BeautySwaggerApplication.class);
+        SpringApplication.run(ElasticsearchApplication.class);
     }
 }

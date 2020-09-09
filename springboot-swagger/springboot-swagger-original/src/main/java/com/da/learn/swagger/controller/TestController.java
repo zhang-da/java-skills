@@ -11,11 +11,11 @@ public class TestController {
 
     @RequestMapping("/test")
     public String test() throws InterruptedException {
-        long start = System.currentTimeMillis();
-        ThreadLocalRandom.current().nextInt(100);
-        Random rand = new Random();
-        Thread.sleep(rand.nextInt(400) + 100L);
-        System.out.println(System.currentTimeMillis() - start);
+//        long start = System.currentTimeMillis();
+//        ThreadLocalRandom.current().nextInt(100);
+//        Random rand = new Random();
+//        Thread.sleep(rand.nextInt(400) + 100L);
+//        System.out.println(System.currentTimeMillis() - start);
         return "ok";
     }
 }

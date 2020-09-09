@@ -22,7 +22,8 @@
 		<module>learn-springcloud</module>
 		<module>springboot-swagger</module>
 		<module>learn-springcloud-alibaba</module>
-	</modules>
+        <module>springboot-elasticsearch</module>
+    </modules>
 <!--    <parent>-->
 <!--		<groupId>org.springframework.boot</groupId>-->
 <!--		<artifactId>spring-boot-starter-parent</artifactId>-->
