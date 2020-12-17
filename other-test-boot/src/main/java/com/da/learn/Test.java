@@ -1,8 +1,10 @@
 package com.da.learn;
 
 import com.da.learn.learnboot.maintainpush.excel.MaintainItem;
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.jms.Connection;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Instant;
@@ -15,6 +17,10 @@ public class Test implements Cloneable {
 
     public static void main(String[] args) throws Exception {
         System.out.println(Instant.now().toEpochMilli());
+
+        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("url");
+        Connection conn = factory.createConnection("abc", "abc");
+        conn.createSession();
 
 
 //        new Thread(() -> {
