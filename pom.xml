@@ -23,6 +23,7 @@
 		<module>springboot-swagger</module>
 		<module>learn-springcloud-alibaba</module>
         <module>springboot-elasticsearch</module>
+        <module>springboot-webssh</module>
     </modules>
 <!--    <parent>-->
 <!--		<groupId>org.springframework.boot</groupId>-->
