@@ -24,6 +24,7 @@ public class JobApplicationRunner implements ApplicationRunner {
     @Value("${task.delay}")
     private Long delay;
 
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         ScheduledExecutorService taskExecutor = Executors.newSingleThreadScheduledExecutor(
@@ -55,8 +56,9 @@ public class JobApplicationRunner implements ApplicationRunner {
                     delay,
                     TimeUnit.MILLISECONDS
             );
-            while (true) {
 
+            while (true) {
+                Thread.sleep(1000L);
             }
         } catch (Exception e) {
             throw new IllegalStateException(e);
