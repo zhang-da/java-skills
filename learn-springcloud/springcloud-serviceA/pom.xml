@@ -27,11 +27,11 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.zhang-da</groupId>
-            <artifactId>my-logging-spring-boot-starter</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.github.zhang-da</groupId>-->
+<!--            <artifactId>my-logging-spring-boot-starter</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
 </project>

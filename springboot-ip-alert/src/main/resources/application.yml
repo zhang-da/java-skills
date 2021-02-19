@@ -25,7 +25,7 @@ ip:
 
 logging:
   file:
-    path: logs/ip-alert.log
+    name: logs/ip-alert.log
 
 task:
   initDelay: 5000
