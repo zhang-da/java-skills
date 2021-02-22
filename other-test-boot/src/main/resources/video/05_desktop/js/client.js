@@ -111,7 +111,6 @@ btnPlay.onclick = ()=> {
 }
 
 btnDownload.onclick = ()=> {
-    IsPc()
     var blob = new Blob(buffer, {type: 'video/webm'});
     var url = window.URL.createObjectURL(blob);
     var a = document.createElement('a');
