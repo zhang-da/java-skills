@@ -57,8 +57,6 @@ snapshot.onclick = function () {
 
 
     var ctx = picture.getContext('2d')
-    console.log(ctx.filter)
-    console.log(filtersSelect.value)
     if(filtersSelect.value === "sepia"){
         ctx.filter = "sepia(1)";
     }else if(filtersSelect.value === "grayscale"){

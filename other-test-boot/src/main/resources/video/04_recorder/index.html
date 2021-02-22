@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebRTC capture video and audio</title>
+
+    <link rel="stylesheet" , href="./css/client.css"/>
+</head>
+<body>
+    <h1>04_recorder </h1>
+    <a href="../index.html">back</a>
+    <br>
+
+    <div>
+        <video autoplay playsinline id="player"></video>
+    </div>
+
+    <div>
+        <button id="record">Start Record</button>
+        <button id="recplay" disabled>Play</button>
+        <button id="download" disabled>Download</button>
+    </div>
+
+    <div>
+        <video playsinline id="recplayer"></video>
+    </div>
+
+    <script src="./js/client.js"></script>
+</body>
+</html>
