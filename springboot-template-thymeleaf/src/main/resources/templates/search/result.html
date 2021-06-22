@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--  <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <title>搜索</title>
+    <!-- 依赖组件 -->
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/pagination.css">
+
+    <link rel="stylesheet" href="/css/result.css">
+</head>
+
+<body>
+
+<div class="dol-header">
+    <a th:href="@{/search}"><img class="dol-logo" src="/img/bocLogo.png" alt="" th:href="@{/search}"></a>
+    <div class="dol-content">
+        <form th:action="@{/search/doSearch}" method="post" class="dol-search-compoment" enctype="multipart/form-data">
+            <input id="param" name="param" class="dol-input" type="text" placeholder="输入并搜索">
+            <button type="submit" class="dol-submit">搜索</button>
+        </form>
+    </div>
+</div>
+
+<div class="dol-nav">
+</div>
+
+<div class="result-content">
+
+
+    <div th:each="file,lstat:${results}">
+        <div class="result-item">
+            <div class="title" th:utext="${file.filename}"></div>
+            <div class="" th:utext="'作者：' + ${file.writer}"></div>
+            <div class="" th:utext="'关键词：' + ${file.keyword}"></div>
+            <div class="info" th:utext="'摘要：' + ${file.abstracts}"></div>
+            <div class="content" th:utext="${file.content}"></div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="navBar"></div>
+
+</body>
+
+</html>

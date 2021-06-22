@@ -24,6 +24,8 @@
 		<module>learn-springcloud-alibaba</module>
         <module>springboot-elasticsearch</module>
         <module>springboot-webssh</module>
+        <module>springboot-security</module>
+        <module>springboot-template-thymeleaf</module>
     </modules>
 <!--    <parent>-->
 <!--		<groupId>org.springframework.boot</groupId>-->

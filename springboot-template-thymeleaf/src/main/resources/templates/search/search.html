@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>搜索</title>
+
+    <link rel="stylesheet" th:href="@{/css/search.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}">
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+<div>
+    <a style="margin-left: 30px; margin-top: 10px" th:href="@{/search/upload}" >上传文件</a>
+</div>
+<div class="dol-container">
+    <img class="seeyonLogo" src="/img/bocLogo.png" alt="">
+    <div class="dol-content">
+        <form th:action="@{/search/doSearch}" method="post" class="dol-search-compoment" enctype="multipart/form-data">
+            <input id="param" name="param" class="dol-input" type="text" placeholder="输入并搜索">
+            <button type="submit" class="dol-submit">搜索</button>
+        </form>
+    </div>
+</div>
+
+</body>
+
+</html>

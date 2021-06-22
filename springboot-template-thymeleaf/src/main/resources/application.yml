@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+    cache: false
+  data:
+    elasticsearch:
+      clusterName: my-application
+      clusterNodes: localhost:9300
+
+logging:
+  file:
+    path: logs
+
