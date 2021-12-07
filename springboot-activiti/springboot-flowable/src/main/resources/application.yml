@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/flowable_test?serverTimezone=UTC&nullCatalogMeansCurrent=true
+    username: root
+    password: zhangda
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimumIdle: 10
+      maximumPoolSize: 200
+      autoCommit: true
+      idleTimeout: 30000
+      poolName: MasterDatabookHikariCP
+      maxLifetime: 1800000
+      connectionTimeout: 30000
+      connectionTestQuery: SELECT 1
+server:
+  port: 8899
+flowable:
+  async-executor-activate: false  # 关闭定时任务job
+  # 将database-schema-update设置未true，当flowable发现库与数据库表结构不一致时，会自动将数据表结构升级到最新版
+  #  在自动创建完flowable的数据库之后。一定要将ProcessEngineConfiguration的database-schema-update改成false。不然当不同的人更改了flowable的版本，会自动更新表结构。会导致问题。
+  database-schema-update: true

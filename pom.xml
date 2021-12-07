@@ -16,7 +16,7 @@
 		<module>springboot-ip-alert</module>
 		<module>learn-concurrent</module>
         <module>springboot-reactor</module>
-		<module>learn-javafx</module>
+<!--		<module>learn-javafx</module>-->
         <module>springboot-extension</module>
 		<module>learn-bigdata</module>
 		<module>learn-springcloud</module>
@@ -26,6 +26,9 @@
         <module>springboot-webssh</module>
         <module>springboot-security</module>
         <module>springboot-template-thymeleaf</module>
+		<module>da-utils</module>
+        <module>learn-crawler</module>
+        <module>learn-config-test</module>
     </modules>
 <!--    <parent>-->
 <!--		<groupId>org.springframework.boot</groupId>-->

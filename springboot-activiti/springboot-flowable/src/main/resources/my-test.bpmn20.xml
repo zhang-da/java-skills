@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="my-test" name="my-test" isExecutable="true">
+    <startEvent id="1">
+      <extensionElements>
+        <flowable:formProperty id="a1"/>
+        <flowable:  id="Property 2"/>
+      </extensionElements>
+    </startEvent>
+    <userTask id="sid-890dc94a-7e5b-46c4-b1ca-b546baa156b6" flowable:assignee="abc">
+      <extensionElements>
+        <flowable:formProperty id="Property 1"/>
+        <flowable:formProperty id="Property 2"/>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-1ba95275-a9d9-42f8-8117-6b0df13506a9" sourceRef="1" targetRef="sid-890dc94a-7e5b-46c4-b1ca-b546baa156b6"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_my-test">
+    <bpmndi:BPMNPlane bpmnElement="my-test" id="BPMNPlane_my-test">
+      <bpmndi:BPMNShape id="shape-73e9feb0-84fb-4e72-b523-78bdb19134e9" bpmnElement="1">
+        <omgdc:Bounds x="-1052.6943" y="-388.54388" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-08742ad1-3ec9-482b-9063-a6eb0ba10cc1" bpmnElement="sid-890dc94a-7e5b-46c4-b1ca-b546baa156b6">
+        <omgdc:Bounds x="-897.8578" y="-418.60684" width="169.6571" height="113.538605"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-3096998f-4d96-4e0e-896b-24963bde64b1" bpmnElement="sid-1ba95275-a9d9-42f8-8117-6b0df13506a9">
+        <omgdi:waypoint x="-1022.69434" y="-381.04388"/>
+        <omgdi:waypoint x="-897.8578" y="-361.83752"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

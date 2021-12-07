@@ -1,0 +1,40 @@
+server:
+  display-name: springboot-acitiviti-draw
+  port: 8085
+
+spring:
+  #Activiti property configuration
+  activiti:
+    database-schema-update: true
+    job-executor-activate: true # asyncExecutorEnabled属性设置设置true后将代替那些老的Job executor
+    history-level: full
+    db-history-used: true
+    check-process-definitions: false # 自动部署验证设置:true-开启（默认）、false-关闭
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    #            driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://m:3306/activiti_draw?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    #            url: jdbc:mysql://localhost:3306/renren_fast?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: root
+    password:
+    hikari:
+      # 最小空闲连接数量
+      minimum-idle: 5
+      connection-test-query: SELECT 1 FROM DUAL
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 20
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 30000
+      # 连接池名字
+      pool-name: SpringBootHikariCP
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 60000
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+
+
+#链接池参考：https://github.com/brettwooldridge/HikariCP
