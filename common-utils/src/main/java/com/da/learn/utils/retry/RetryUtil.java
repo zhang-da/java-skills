@@ -9,6 +9,7 @@ public class RetryUtil {
 
     /**
      * 重试方法，不支持显式异常抛出
+     *
      * @param maxRetryCount
      * @param supplier
      * @param consumer
@@ -43,10 +44,11 @@ public class RetryUtil {
 
     /**
      * 重试方法，支持显式异常抛出
+     *
      * @param maxRetryCount 最大重试次数
-     * @param supplier 重试方法
-     * @param consumer 是否重试条件
-     * @param <T> 返回结果类型
+     * @param supplier      重试方法
+     * @param consumer      是否重试条件
+     * @param <T>           返回结果类型
      * @return 重试方法返回结果
      * @throws Exception
      */
